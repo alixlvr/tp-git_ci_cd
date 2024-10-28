@@ -1,6 +1,6 @@
 # .github/workflows/build-and-push-docker.yml
-name: Build and Push Docker Image
 
+name: Build and Push Docker Image
 on:
   workflow_run:
     workflows: ["Test Backend"]
@@ -28,7 +28,7 @@ jobs:
         with:
           context: ./simple-api
           tags: ${{secrets.DOCKER_HUB_USERNAME}}/tp-git_backend:latest
-          push: ${{ github.ref == 'refs/heads/main' }}
+          push: true
 
       # Build and push database image
       - name: Build image and push database
@@ -36,7 +36,7 @@ jobs:
         with:
           context: ./database
           tags: ${{secrets.DOCKER_HUB_USERNAME}}/tp-git_database:latest
-          push: ${{ github.ref == 'refs/heads/main' }}
+          push: true
 
       # Build and push httpd image
       - name: Build image and push httpd
@@ -44,4 +44,5 @@ jobs:
         with:
           context: ./http-server
           tags: ${{secrets.DOCKER_HUB_USERNAME}}/tp-git_httpd:latest
-          push: ${{ github.ref == 'refs/heads/main' }}
+          push: true
+
