@@ -44,14 +44,14 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ../simple-api
           # Note: tags has to be all lower-case
-          tags: ${{secrets.DOCKER_HUB_USERNAME}}/tp-git_CI_CD:latest
+          tags: ${{secrets.DOCKER_HUB_USERNAME}}/tp-git_ci_cd:latest
 
       - name: Build image and push database
         # DO the same for database
         uses: docker/build-push-action@v3
         with:
           context: ../database
-          tags: ${{secrets.DOCKER_HUB_USERNAME}}/tp-git_CI_CD:latest
+          tags: ${{secrets.DOCKER_HUB_USERNAME}}/tp-git_ci_cd:latest
 
 
       - name: Build image and push httpd
@@ -59,5 +59,5 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ../http-server
-          tags: ${{secrets.DOCKER_HUB_USERNAME}}/tp-git_CI_CD:latest
+          tags: ${{secrets.DOCKER_HUB_USERNAME}}/tp-git_ci_cd:latest
 
