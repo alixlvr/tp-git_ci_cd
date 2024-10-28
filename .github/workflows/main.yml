@@ -47,7 +47,7 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ./simple-api
           # Note: tags has to be all lower-case
-          tags: ${{secrets.DOCKER_HUB_USERNAME}}/tp-git_ci_cd:latest
+          tags: ${{secrets.DOCKER_HUB_USERNAME}}/tp-git_backend:latest
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
 
@@ -56,7 +56,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./database
-          tags: ${{secrets.DOCKER_HUB_USERNAME}}/tp-git_ci_cd:latest
+          tags: ${{secrets.DOCKER_HUB_USERNAME}}/tp-git_database:latest
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
 
@@ -66,6 +66,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./http-server
-          tags: ${{secrets.DOCKER_HUB_USERNAME}}/tp-git_ci_cd:latest
+          tags: ${{secrets.DOCKER_HUB_USERNAME}}/tp-git_httpd:latest
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
